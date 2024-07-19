@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhtuklxnb6sld"]
+
+[ext_resource type="PackedScene" uid="uid://b8kpcv38c7wu6" path="res://Enemies/Scenes/enemy.tscn" id="1_ciiae"]
+[ext_resource type="Script" path="res://Enemies/Scripts/yellow_bug.gd" id="2_4tpqp"]
+[ext_resource type="Texture2D" uid="uid://c4lqjgks61u8n" path="res://Assets/Sprites/YellowBug.png" id="2_it4qt"]
+[ext_resource type="Script" path="res://Scripts/Components/border_bounce_component.gd" id="4_af4jk"]
+
+[node name="YellowBug" instance=ExtResource("1_ciiae")]
+script = ExtResource("2_4tpqp")
+
+[node name="StatsComponent" parent="." index="0"]
+health = 4
+
+[node name="MoveComponent" parent="." index="3"]
+velocity = Vector2(2.08165e-12, 250)
+
+[node name="Sprite2D" parent="." index="4"]
+texture = ExtResource("2_it4qt")
+
+[node name="BorderBounceComponent" type="Node" parent="." index="12" node_paths=PackedStringArray("actor", "move_component")]
+script = ExtResource("4_af4jk")
+actor = NodePath("..")
+move_component = NodePath("../MoveComponent")
